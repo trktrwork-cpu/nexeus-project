@@ -15,6 +15,7 @@ export interface HoursByCard {
 export interface WeeklySummary {
   total_hours: number;
   newly_created_tasks: number;
+  completed_tasks: number;
 }
 
 export interface WeeklyReport {
