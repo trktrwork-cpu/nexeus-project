@@ -1,4 +1,9 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {
+  HashRouter,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 
 import BoardPage from "../pages/Board/BoardPage";
 import LoginPage from "../pages/Auth/LoginPage";
@@ -10,7 +15,7 @@ import ProtectedRoute from "./ProtectedRoute";
 
 const AppRouter = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         {/* Public routes */}
         <Route path="/login" element={<LoginPage />} />
@@ -23,11 +28,13 @@ const AppRouter = () => {
           <Route path="/reports" element={<ReportsPage />} />
         </Route>
 
-        {/* Redirect */}
+        {/* 404 page */}
         <Route path="*" element={<NotFoundPage />} />
+
+        {/* Redirect */}
         <Route path="/*" element={<Navigate to="/" replace />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
