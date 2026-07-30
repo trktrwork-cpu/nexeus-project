@@ -233,6 +233,16 @@ alembic upgrade head
 
 ---
 
+# Card Ordering Strategy
+
+Cards are ordered within each workflow column using an integer **position** value stored in the PostgreSQL database.
+
+When a card is moved using drag-and-drop, the frontend sends the destination list and the new position to the backend. The backend validates that the authenticated user owns the board, updates the card's list and position, and adjusts the positions of the remaining cards in the affected columns to maintain a consistent ordering.
+
+Because the ordering is persisted in the database, the board displays cards in the same order after refreshing the page or logging in again.
+
+---
+
 # Deployment
 
 The application is deployed using **Render**.
