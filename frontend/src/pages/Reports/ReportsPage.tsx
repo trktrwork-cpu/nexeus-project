@@ -323,31 +323,31 @@ const ReportsPage = () => {
               </tr>
             </thead>
 
-            <tbody>
-              {report.hours_by_card.length === 0 ? (
-                <tr>
-                  <td
-                    colSpan={2}
-                    style={{
-                      textAlign: "center",
-                      padding: "1rem",
-                    }}
-                  >
-                    No card activity for this week.
-                  </td>
-                </tr>
-              ) : (
-                report.hours_by_card.map((card) => (
-                  <tr key={card.card_id}>
-                    <td>{card.card_title}</td>
+<tbody>
+  {report.hours_by_card.length === 0 ? (
+    <tr>
+      <td
+        colSpan={2}
+        style={{
+          textAlign: "center",
+          padding: "1rem",
+        }}
+      >
+        No card activity for this week.
+      </td>
+    </tr>
+  ) : (
+    report.hours_by_card.map((card) => (
+      <tr key={card.card_id}>
+        <td>{card.card_title}</td>
 
-                    <td>
-                      {card.total_hours.toFixed(2)} h
-                    </td>
-                  </tr>
-                ))
-              )}
-            </tbody>
+        <td>
+          {card.total_hours.toFixed(2)} h
+        </td>
+      </tr>
+    ))
+  )}
+</tbody>
           </table>
         </div>
       </div>
