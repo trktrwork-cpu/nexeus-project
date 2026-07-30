@@ -101,29 +101,35 @@ const ReportsPage = () => {
 
   if (loading) {
     return (
-      <div
-        style={{
-          maxWidth: "1000px",
-          margin: "40px auto",
-          padding: "2rem",
-        }}
-      >
-        <h2>Loading report...</h2>
-      </div>
+      <>
+        <Navbar />
+        <div
+          style={{
+            maxWidth: "1000px",
+            margin: "40px auto",
+            padding: "2rem",
+          }}
+        >
+          <h2>Loading report...</h2>
+        </div>
+      </>
     );
   }
 
   if (!report) {
     return (
-      <div
-        style={{
-          maxWidth: "1000px",
-          margin: "40px auto",
-          padding: "2rem",
-        }}
-      >
-        <h2>Unable to load report.</h2>
-      </div>
+      <>
+        <Navbar />
+        <div
+          style={{
+            maxWidth: "1000px",
+            margin: "40px auto",
+            padding: "2rem",
+          }}
+        >
+          <h2>Unable to load report.</h2>
+        </div>
+      </>
     );
   }
 
