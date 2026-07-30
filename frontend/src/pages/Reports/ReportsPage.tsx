@@ -273,23 +273,28 @@ const ReportsPage = () => {
             </thead>
 
             <tbody>
-              {report.hours_by_user.map(
-                (user) => (
-                  <tr
-                    key={user.user_id}
+              {report.hours_by_user.length === 0 ? (
+                <tr>
+                  <td
+                    colSpan={2}
+                    style={{
+                      textAlign: "center",
+                      padding: "1rem",
+                    }}
                   >
-                    <td>
-                      {user.username}
-                    </td>
+                    No worklogs recorded this week.
+                  </td>
+                </tr>
+              ) : (
+                report.hours_by_user.map((user) => (
+                  <tr key={user.user_id}>
+                    <td>{user.username}</td>
 
                     <td>
-                      {user.total_hours.toFixed(
-                        2,
-                      )}{" "}
-                      h
+                      {user.total_hours.toFixed(2)} h
                     </td>
                   </tr>
-                ),
+                ))
               )}
             </tbody>
           </table>
@@ -319,25 +324,28 @@ const ReportsPage = () => {
             </thead>
 
             <tbody>
-              {report.hours_by_card.map(
-                (card) => (
-                  <tr
-                    key={card.card_id}
+              {report.hours_by_card.length === 0 ? (
+                <tr>
+                  <td
+                    colSpan={2}
+                    style={{
+                      textAlign: "center",
+                      padding: "1rem",
+                    }}
                   >
-                    <td>
-                      {
-                        card.card_title
-                      }
-                    </td>
+                    No card activity for this week.
+                  </td>
+                </tr>
+              ) : (
+                report.hours_by_card.map((card) => (
+                  <tr key={card.card_id}>
+                    <td>{card.card_title}</td>
 
                     <td>
-                      {card.total_hours.toFixed(
-                        2,
-                      )}{" "}
-                      h
+                      {card.total_hours.toFixed(2)} h
                     </td>
                   </tr>
-                ),
+                ))
               )}
             </tbody>
           </table>
