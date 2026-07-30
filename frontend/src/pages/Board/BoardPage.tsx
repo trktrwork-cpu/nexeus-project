@@ -312,7 +312,36 @@ const BoardPage = () => {
   }
 
   if (!board) {
-    return <h2>No boards found.</h2>;
+    return (
+      <div
+        style={{
+          padding: "2rem",
+          textAlign: "center",
+        }}
+      >
+        <button
+          onClick={() => {
+            localStorage.removeItem("access_token");
+            window.location.href = "/login";
+          }}
+          style={{
+            position: "absolute",
+            top: "20px",
+            right: "20px",
+            padding: "0.6rem 1rem",
+            border: "none",
+            borderRadius: "8px",
+            backgroundColor: "#ef4444",
+            color: "white",
+            cursor: "pointer",
+          }}
+        >
+          Logout
+        </button>
+
+        <h2>No boards found.</h2>
+      </div>
+    );
   }
 
   return (
