@@ -379,7 +379,7 @@ const BoardPage = () => {
           <button
             onClick={() => {
               localStorage.removeItem("access_token");
-              window.location.href = "/login";
+              window.location.href = "/#/login";
             }}
             style={{
               padding: "0.6rem 1rem",
