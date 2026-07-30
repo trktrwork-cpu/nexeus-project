@@ -328,16 +328,43 @@ const BoardPage = () => {
           minHeight: "100vh",
         }}
       >
-        <h1
+        <div
           style={{
-            color: "#111827",
-            marginBottom: "0.5rem",
-            fontSize: "2rem",
-            fontWeight: "700",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "2rem",
           }}
         >
-          {board.title}
-        </h1>
+          <h1
+            style={{
+              color: "#111827",
+              fontSize: "2rem",
+              fontWeight: "700",
+              margin: 0,
+            }}
+          >
+            {board.title}
+          </h1>
+
+          <button
+            onClick={() => {
+              localStorage.removeItem("access_token");
+              window.location.href = "/login";
+            }}
+            style={{
+              padding: "0.6rem 1rem",
+              border: "none",
+              borderRadius: "8px",
+              backgroundColor: "#ef4444",
+              color: "white",
+              cursor: "pointer",
+              fontWeight: "600",
+            }}
+          >
+            Logout
+          </button>
+        </div>
 
         {board.description && (
           <p
