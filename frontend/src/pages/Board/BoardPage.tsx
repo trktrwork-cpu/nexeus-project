@@ -1,3 +1,4 @@
+import Navbar from "../../components/Navbar";
 import { useEffect, useState } from "react";
 
 import {
@@ -316,30 +317,15 @@ const BoardPage = () => {
       <div
         style={{
           padding: "2rem",
-          textAlign: "center",
+          backgroundColor: "#ffffff",
+          minHeight: "100vh",
         }}
       >
-        <button
-          onClick={() => {
-            localStorage.removeItem("access_token");
-            window.location.href = "/#/login";
-          }}
-          style={{
-            position: "absolute",
-            top: "20px",
-            right: "20px",
-            padding: "0.6rem 1rem",
-            border: "none",
-            borderRadius: "8px",
-            backgroundColor: "#ef4444",
-            color: "white",
-            cursor: "pointer",
-          }}
-        >
-          Logout
-        </button>
+        <Navbar />
 
-        <h2>No boards found.</h2>
+        <h2 style={{ textAlign: "center" }}>
+          No boards found.
+        </h2>
       </div>
     );
   }
@@ -357,43 +343,18 @@ const BoardPage = () => {
           minHeight: "100vh",
         }}
       >
-        <div
+        <Navbar />
+
+        <h1
           style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: "2rem",
+            color: "#111827",
+            fontSize: "2rem",
+            fontWeight: "700",
+            marginBottom: "0.5rem",
           }}
         >
-          <h1
-            style={{
-              color: "#111827",
-              fontSize: "2rem",
-              fontWeight: "700",
-              margin: 0,
-            }}
-          >
-            {board.title}
-          </h1>
-
-          <button
-            onClick={() => {
-              localStorage.removeItem("access_token");
-              window.location.href = "/#/login";
-            }}
-            style={{
-              padding: "0.6rem 1rem",
-              border: "none",
-              borderRadius: "8px",
-              backgroundColor: "#ef4444",
-              color: "white",
-              cursor: "pointer",
-              fontWeight: "600",
-            }}
-          >
-            Logout
-          </button>
-        </div>
+          {board.title}
+        </h1>
 
         {board.description && (
           <p
@@ -445,8 +406,7 @@ const BoardPage = () => {
           />
         )}
       </div>
-    </DndContext >
+    </DndContext>
   );
 };
-
 export default BoardPage;
