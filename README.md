@@ -24,6 +24,7 @@ https://nexeus-project.onrender.com
 - Create, edit, delete, and move task cards
 - Drag and drop between columns
 - Persistent card ordering
+- Card labels for improved task organization
 - Worklog management
 - Weekly "My Hours" dashboard
 - Weekly reports
@@ -270,6 +271,7 @@ Manual testing was performed for the following features:
 - Card CRUD operations
 - Drag and drop
 - Card ordering persistence
+- Card labels
 - Worklog CRUD operations
 - Weekly "My Hours"
 - Weekly reports
@@ -285,15 +287,23 @@ QA.md
 
 ---
 
+# Productivity Improvements
+
+The project includes the following productivity improvement:
+
+- **Card Labels** – Cards can be assigned labels to improve task organization and make it easier to categorize and identify work items on the board.
+
+---
+
 # Future Improvements
 
 Possible future improvements include:
 
-- Card labels
-- Search and filtering
-- Email notifications
-- User avatars
-- Team collaboration
+- Real-time collaboration using WebSockets
+- Advanced search and filtering
+- Email notifications for due dates and task updates
+- Dashboard analytics and productivity charts
+- User profile customization and avatars
 
 ---
 
