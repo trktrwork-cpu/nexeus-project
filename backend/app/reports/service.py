@@ -43,8 +43,10 @@ def get_weekly_report(
             completed_tasks=_get_completed_tasks(
                 db,
                 owner_id,
-                week_start,
-                week_end,
+            ),
+            overdue_tasks=_get_overdue_tasks(
+                db,
+                owner_id,
             ),
         ),
         hours_by_user=_get_hours_by_user(
@@ -81,7 +83,9 @@ def export_weekly_report_csv(
     writer.writerow([])
 
     writer.writerow(["Summary"])
-    writer.writerow(["Total Hours", report.summary.total_hours])
+    writer.writerow(
+        ["Total Hours", report.summary.total_hours]
+    )
     writer.writerow(
         [
             "New Tasks",
@@ -92,6 +96,12 @@ def export_weekly_report_csv(
         [
             "Completed Tasks",
             report.summary.completed_tasks,
+        ]
+    )
+    writer.writerow(
+        [
+            "Overdue Tasks",
+            report.summary.overdue_tasks,
         ]
     )
 
@@ -264,8 +274,6 @@ def _get_newly_created_tasks(
 def _get_completed_tasks(
     db: Session,
     owner_id: int,
-    week_start: date,
-    week_end: date,
 ) -> int:
     return (
         db.query(Card)
@@ -273,8 +281,25 @@ def _get_completed_tasks(
         .join(Board, List.board_id == Board.id)
         .filter(
             Board.owner_id == owner_id,
-            func.date(Card.updated_at) >= week_start,
-            func.date(Card.updated_at) <= week_end,
+            List.title == "Done",
+        )
+        .count()
+    )
+
+
+def _get_overdue_tasks(
+    db: Session,
+    owner_id: int,
+) -> int:
+    return (
+        db.query(Card)
+        .join(List, Card.list_id == List.id)
+        .join(Board, List.board_id == Board.id)
+        .filter(
+            Board.owner_id == owner_id,
+            Card.due_date.isnot(None),
+            Card.due_date < date.today(),
+            List.title != "Done",
         )
         .count()
     )

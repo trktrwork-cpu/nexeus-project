@@ -16,6 +16,7 @@ export interface WeeklySummary {
   total_hours: number;
   newly_created_tasks: number;
   completed_tasks: number;
+  overdue_tasks: number;
 }
 
 export interface WeeklyReport {
@@ -27,11 +28,14 @@ export interface WeeklyReport {
 export const getWeeklyReport = async (
   weekStart: string,
 ): Promise<WeeklyReport> => {
-  const response = await api.get<WeeklyReport>("/reports/weekly", {
-    params: {
-      week_start: weekStart,
+  const response = await api.get<WeeklyReport>(
+    "/reports/weekly",
+    {
+      params: {
+        week_start: weekStart,
+      },
     },
-  });
+  );
 
   return response.data;
 };

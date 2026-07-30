@@ -213,10 +213,7 @@ const ReportsPage = () => {
             <h3>New Tasks</h3>
 
             <h2>
-              {
-                report.summary
-                  .newly_created_tasks
-              }
+              {report.summary.newly_created_tasks}
             </h2>
           </div>
 
@@ -231,10 +228,22 @@ const ReportsPage = () => {
             <h3>Completed Tasks</h3>
 
             <h2>
-              {
-                report.summary
-                  .completed_tasks
-              }
+              {report.summary.completed_tasks}
+            </h2>
+          </div>
+
+          <div
+            style={{
+              flex: 1,
+              border: "1px solid #444",
+              borderRadius: "8px",
+              padding: "1rem",
+            }}
+          >
+            <h3>Overdue Tasks</h3>
+
+            <h2>
+              {report.summary.overdue_tasks}
             </h2>
           </div>
         </div>

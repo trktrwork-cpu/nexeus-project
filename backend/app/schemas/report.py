@@ -17,6 +17,7 @@ class WeeklySummary(BaseModel):
     total_hours: float
     newly_created_tasks: int
     completed_tasks: int
+    overdue_tasks: int
 
 
 class WeeklyReportResponse(BaseModel):
