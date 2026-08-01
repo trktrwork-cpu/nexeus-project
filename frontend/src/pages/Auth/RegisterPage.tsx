@@ -34,10 +34,25 @@ const RegisterPage = () => {
             );
 
             navigate("/login");
-        } catch (err) {
-            setError(
-                "Registration failed. Email may already be registered.",
-            );
+        } catch (err: any) {
+            const detail = err.response?.data?.detail;
+
+            if (
+                Array.isArray(detail) &&
+                detail.some(
+                    (e: any) =>
+                        e.loc?.includes("password") &&
+                        e.type?.includes("string_too_short")
+                )
+            ) {
+                setError(
+                    "Registration failed. Password needs to be at least 8 characters."
+                );
+            } else if (detail === "Email already registered") {
+                setError("Registration failed. Email is already registered.");
+            } else {
+                setError("Registration failed.");
+            }
         } finally {
             setLoading(false);
         }
